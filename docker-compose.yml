@@ -1,23 +1,16 @@
-version: '3.3'
+version: "3.3"
 
 services:
   postgres:
-    image: postgres:13
+    image: postgres:14
     environment:
-      - POSTGRES_DB=my_store
-      - POSTGRES_USER=nico
-      - POSTGRES_PASSWORD=admin123
+      - POSTGRES_DB=my_store_graphql
+      - POSTGRES_USER=felipe
+      - POSTGRES_PASSWORD=123456
     ports:
-      - 5432:5432
+      - 5433:5432
     volumes:
-      - ./postgres_data:/var/lib/postgresql/data
+      - my-store-graphql-volume:/var/lib/postgresql/data
 
-  pgadmin:
-    image: dpage/pgadmin4
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=admin@mail.com
-      - PGADMIN_DEFAULT_PASSWORD=root
-    ports:
-      - 5050:80
-
-
+volumes:
+  my-store-graphql-volume:
