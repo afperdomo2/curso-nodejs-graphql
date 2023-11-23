@@ -6,13 +6,15 @@ const { expressMiddleware } = require('@apollo/server/express4');
 
 const typeDefs = `
   type Query {
-    hello: String
+    hello: String,
+    getPerson(name: String, age: Int): String
   }
 `;
 
 const resolvers = {
   Query: {
     hello: () => 'hola mundo',
+    getPerson: (_, args) => `${args.name} tiene ${args.age} años`,
   },
 };
 
@@ -25,7 +27,7 @@ const useGraphql = async (app) => {
   });
 
   await server.start();
-  console.log('🚀 Graphql Server start');
+  console.log('🚀 Apollo Server start');
 
   app.use(
     expressMiddleware(server, {
