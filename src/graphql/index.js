@@ -6,8 +6,13 @@ const { expressMiddleware } = require('@apollo/server/express4');
 
 const typeDefs = `
   type Query {
-    hello: String,
+    hello: String
     getPerson(name: String, age: Int): String
+    getInt(age: Int): Int
+    getFloat: Float
+    getString: String
+    getBoolean: Boolean
+    getID: ID
   }
 `;
 
@@ -15,6 +20,11 @@ const resolvers = {
   Query: {
     hello: () => 'hola mundo',
     getPerson: (_, args) => `${args.name} tiene ${args.age} años`,
+    getInt: (_, { age }) => age,
+    getFloat: () => 1.1,
+    getString: () => 'Palabra',
+    getBoolean: () => true,
+    getID: () => '123123',
   },
 };
 
