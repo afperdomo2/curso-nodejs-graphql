@@ -8,11 +8,12 @@ const typeDefs = `
   type Query {
     hello: String
     getPerson(name: String, age: Int): String
-    getInt(age: Int): Int
+    getInt(age: Int!): Int!
     getFloat: Float
     getString: String
     getBoolean: Boolean
-    getID: ID
+    getID: ID!
+    getNumbers(numbers: [Int!]!): [Int!]!
   }
 `;
 
@@ -25,6 +26,7 @@ const resolvers = {
     getString: () => 'Palabra',
     getBoolean: () => true,
     getID: () => '123123',
+    getNumbers: (_, { numbers }) => numbers.map((n) => n * 2),
   },
 };
 
