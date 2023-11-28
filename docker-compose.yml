@@ -10,7 +10,4 @@ services:
     ports:
       - 5433:5432
     volumes:
-      - my-store-graphql-volume:/var/lib/postgresql/data
-
-volumes:
-  my-store-graphql-volume:
+      - "~/postgres_data:/var/lib/postgresql/data"

@@ -32,10 +32,15 @@ const createApp = async () => {
   routerApi(app);
   await useGraphql(app);
 
+  /**
+   * MIDDLEWARES
+   * Es importante tener en cuenta el orden de ejecución
+   */
   app.use(logErrors);
   app.use(ormErrorHandler);
   app.use(boomErrorHandler);
   app.use(errorHandler);
+
   return app;
 };
 

@@ -5,6 +5,6 @@ const createApp = require('./app');
   const app = await createApp();
 
   app.listen(port, () => {
-    console.log(`✅ Server run on Port: ${port}`);
+    console.info(`✅ Server express on: http://localhost:${port}`);
   });
 })();
