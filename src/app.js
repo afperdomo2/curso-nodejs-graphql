@@ -1,6 +1,5 @@
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 
 const routerApi = require('./routes');
 const { checkApiKey } = require('./middlewares/auth.handler');
@@ -16,11 +15,6 @@ const {
 
 const createApp = async () => {
   const app = express();
-
-  // STATIC FILES
-  const staticDir = path.join(__dirname, 'public');
-  console.log('staticDir:', staticDir);
-  app.use(express.static(staticDir));
 
   app.use(express.json());
   app.use(cors());
