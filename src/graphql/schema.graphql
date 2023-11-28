@@ -12,6 +12,10 @@ type Query {
   products: [Product!]
 }
 
+type Mutation {
+  addProduct(data: CreateProductInput!): Product
+}
+
 # Nuevo tipo de Producto
 type Product {
   id: ID!
@@ -20,4 +24,13 @@ type Product {
   description: String!
   image: String!
   createdAt: String
+}
+
+# Es el equivalente a los DTOs
+input CreateProductInput {
+  name: String!
+  price: Float!
+  description: String!
+  image: String!
+  categoryId: ID!
 }
