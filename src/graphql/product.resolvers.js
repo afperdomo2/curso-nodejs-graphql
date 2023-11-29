@@ -2,16 +2,35 @@ const ProductsService = require('./../services/product.service');
 
 const service = new ProductsService();
 
-const getProduct = async (_, { id }) => {
-  return await service.findOne(id);
+/**
+ * No hay necesidad de poner async y await en las funciones,
+ * ya que el resolver lo solventa
+ */
+const getProduct = (_, { id }) => {
+  return service.findOne(id);
 };
 
-const getProducts = async () => {
-  return await service.find({});
+const getProducts = () => {
+  return service.find({});
 };
 
-const addProduct = async (_, { data }) => {
-  return await service.create(data);
+const addProduct = (_, { data }) => {
+  return service.create(data);
 };
 
-module.exports = { getProduct, getProducts, addProduct };
+const updateProduct = (_, { id, changes }) => {
+  return service.update(id, changes);
+};
+
+const deleteProduct = async (_, { id }) => {
+  await service.delete(id);
+  return id;
+};
+
+module.exports = {
+  getProduct,
+  getProducts,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+};
