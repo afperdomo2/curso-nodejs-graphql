@@ -25,7 +25,15 @@ type Product {
   price: Float!
   description: String!
   image: String!
+  categoryId: ID!
+  category: Category!
   createdAt: String
+}
+
+type Category {
+  id: ID!
+  name: String!
+  image: String!
 }
 
 # Es el equivalente a los DTOs
