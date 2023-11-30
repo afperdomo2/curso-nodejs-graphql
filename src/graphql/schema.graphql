@@ -17,6 +17,7 @@ type Mutation {
   addProduct(data: CreateProductInput!): Product
   updateProduct(id: ID!, changes: UpdateProductInput!): Product
   deleteProduct(id: ID!): ID!
+  addCategory(data: CreateCategoryInput!): Category
 }
 
 # Nuevo tipo de Producto
@@ -64,4 +65,9 @@ input UpdateProductInput {
   description: String
   image: String
   categoryId: ID
+}
+
+input CreateCategoryInput {
+  name: String!
+  image: String!
 }
