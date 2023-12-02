@@ -7,6 +7,13 @@ const {
 } = require('./product.resolvers');
 const { addCategory } = require('./category.resolvers');
 const { login } = require('./auth.resolvers');
+const { RegularExpression } = require('graphql-scalars');
+
+// Crear un type personalizado con Regex
+const CategoryNameType = new RegularExpression(
+  'CategoryNameType',
+  /^[a-zA-Z0-9]{3,8}$/
+);
 
 const resolvers = {
   Query: {
@@ -31,6 +38,8 @@ const resolvers = {
     deleteProduct,
     addCategory,
   },
+
+  CategoryNameType,
 };
 
 module.exports = resolvers;

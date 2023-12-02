@@ -12,7 +12,10 @@ const service = new CategoryService();
 const addCategory = async (_, { data }, context) => {
   const user = await checkJtwGQ(context);
   checkRolesGQ(user, 'admin');
-  return service.create(data);
+  return service.create({
+    ...data,
+    image: data.image.href,
+  });
 };
 
 module.exports = { addCategory };
