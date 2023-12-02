@@ -18,4 +18,8 @@ const addCategory = async (_, { data }, context) => {
   });
 };
 
-module.exports = { addCategory };
+const getCategory = (_, { id }) => {
+  return service.findOne(id);
+};
+
+module.exports = { addCategory, getCategory };

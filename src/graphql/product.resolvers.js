@@ -1,30 +1,35 @@
 const ProductsService = require('./../services/product.service');
 
-const service = new ProductsService();
+const productsService = new ProductsService();
 
 /**
  * No hay necesidad de poner async y await en las funciones,
  * ya que el resolver lo solventa
  */
 const getProduct = (_, { id }) => {
-  return service.findOne(id);
+  return productsService.findOne(id);
 };
 
 const getProducts = () => {
-  return service.find({});
+  return productsService.find({});
 };
 
 const addProduct = (_, { data }) => {
-  return service.create(data);
+  return productsService.create(data);
 };
 
 const updateProduct = (_, { id, changes }) => {
-  return service.update(id, changes);
+  return productsService.update(id, changes);
 };
 
 const deleteProduct = async (_, { id }) => {
-  await service.delete(id);
+  await productsService.delete(id);
   return id;
+};
+
+const getProductByCategory = (parent) => {
+  const id = parent.dataValues.id;
+  return productsService.getByCategory(id);
 };
 
 module.exports = {
@@ -33,4 +38,5 @@ module.exports = {
   addProduct,
   updateProduct,
   deleteProduct,
+  getProductByCategory,
 };
